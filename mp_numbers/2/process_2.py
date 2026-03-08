@@ -1,10 +1,13 @@
 import os
 import pandas as pd
 
-IN_PATH = os.path.join('lords_by_party','0','SN02384.xlsx')
-OUT_PATH = os.path.join('lords_by_party','5','mps.csv')
+IN_PATH = os.path.join('mp_numbers','1','mps.csv')
 
-df = pd.read_excel(IN_PATH,sheet_name=1,header=2,usecols=[0,3,4,5],names=['ge','asembled','dissolved','number'])
+OUT_PATH = os.path.join('mp_numbers','3','mps_monthly.csv')
+
+#df = pd.read_excel(IN_PATH,sheet_name=1,header=2,usecols=[0,3,4,5],names=['ge','asembled','dissolved','number'])
+
+df = pd.read_csv(IN_PATH)
 df = df[df['ge'] >= 1997]
 
 df['asembled'] = pd.to_datetime(df['asembled'])
